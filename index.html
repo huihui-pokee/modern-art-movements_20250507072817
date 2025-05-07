@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>Modern Art Movements</title>
+    <style>
+        :root {
+            --primary-color: #4a4e69;
+            --secondary-color: #9a8c98;
+            --accent-color: #c9ada7;
+            --light-color: #f2e9e4;
+            --dark-color: #22223b;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-image: url('https://www.copenhagenliving.com/wp-content/uploads/2024/08/modern-art-banner-2.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(34, 34, 59, 0.7);
+        }
+        
+        .header-content {
+            z-index: 1;
+            color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .art-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .art-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .art-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .art-info {
+            padding: 20px;
+        }
+        
+        .art-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .art-info p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-color);
+        }
+        
+        .chart-container {
+            margin: 50px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chart-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .bar-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .bar-label {
+            width: 150px;
+            text-align: right;
+            padding-right: 10px;
+            font-weight: 500;
+        }
+        
+        .bar {
+            height: 30px;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .bar-value {
+            margin-left: 10px;
+            font-weight: 500;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 50px 0;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            animation: modalopen 0.4s;
+        }
+        
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+        }
+        
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+        
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 15px;
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+            
+            .comparison-table {
+                overflow-x: auto;
+                display: block;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class=\"header-content\">
+            <h1>Modern Art Movements</h1>
+            <p class=\"tagline\">Exploring the revolutionary artistic styles of the late 19th to 20th century</p>
+            <a href=\"#explore\" class=\"btn\">Explore Movements</a>
+        </div>
+    </header>
+    
+    <nav>
+        <div class=\"nav-container\">
+            <div class=\"logo\">ArtMovements</div>
+            <div class=\"menu-toggle\">&#9776;</div>
+            <ul class=\"nav-links\">
+                <li><a href=\"#about\">About</a></li>
+                <li><a href=\"#timeline\">Timeline</a></li>
+                <li><a href=\"#movements\">Movements</a></li>
+                <li><a href=\"#stats\">Statistics</a></li>
+                <li><a href=\"#compare\">Compare</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <section id=\"about\" class=\"container\">
+            <h2 class=\"section-title\">About Modern Art</h2>
+            <div class=\"intro\">
+                <p>Modern art movements mark a significant shift from traditional artistic styles, emphasizing experimentation and abstraction. This period, primarily spanning the late 19th to the late 20th century, includes a diverse range of movements, each with unique characteristics and influential artists. These movements revolutionized how we perceive and create art, challenging conventional norms and paving the way for contemporary artistic expression.</p>
+            </div>
+            
+            <div class=\"tabs\">
+                <button class=\"tab-btn active\" data-tab=\"overview\">Overview</button>
+                <button class=\"tab-btn\" data-tab=\"importance\">Importance</button>
+                <button class=\"tab-btn\" data-tab=\"legacy\">Legacy</button>
+            </div>
+            
+            <div id=\"overview\" class=\"tab-content active\">
+                <p>Modern art encompasses a wide variety of movements, each with its own philosophy and aesthetic approach. From the dreamy landscapes of Impressionism to the geometric abstraction of Cubism and the emotional intensity of Expressionism, these movements collectively redefined the purpose and possibilities of artistic creation.</p>
+                <p>The era saw artists breaking away from academic traditions to explore new techniques, materials, and subject matter. This period of artistic innovation coincided with rapid social, technological, and political changes, reflecting the transformative spirit of the times.</p>
+            </div>
+            
+            <div id=\"importance\" class=\"tab-content\">
+                <p>Modern art movements were revolutionary in their approach, challenging centuries of artistic tradition and opening new avenues for creative expression. They reflected the dramatic changes in society, technology, and human consciousness that characterized the modern era.</p>
+                <p>These movements democratized art by breaking down barriers between \"high\" and \"low\" culture, incorporating everyday objects and experiences, and making art more accessible to the general public. The innovations of modern artists continue to influence contemporary creative practices across all disciplines.</p>
+            </div>
+            
+            <div id=\"legacy\" class=\"tab-content\">
+                <p>The legacy of modern art movements extends far beyond the art world, influencing architecture, design, fashion, advertising, and digital media. The experimental spirit and technical innovations of these movements laid the groundwork for postmodern and contemporary artistic practices.</p>
+                <p>Modern art changed our understanding of what art could be and do, expanding its definition to include abstract forms, found objects, performance, and conceptual ideas. The emphasis on individual expression and innovation remains central to artistic creation today.</p>
+            </div>
+        </section>
+        
+        <section id=\"timeline\" class=\"container\">
+            <h2 class=\"section-title\">Timeline of Modern Art</h2>
+            
+            <div class=\"timeline\">
+                <div class=\"timeline-item left\">
+                    <div class=\"timeline-content\">
+                        <h3>1870s-1890s</h3>
+                        <p>Impressionism emerges in France, focusing on capturing light and movement in everyday scenes.</p>
+                    </div>
+                </div>
+                
+                <div class=\"timeline-item right\">
+                    <div class=\"timeline-content\">
+                        <h3>1890s-1910s</h3>
+                        <p>Post-Impressionism, Art Nouveau, and Expressionism develop, emphasizing emotional content and stylization.</p>
+                    </div>
+                </div>
+                
+                <div class=\"timeline-item left\">
+                    <div class=\"timeline-content\">
+                        <h3>1907-1914</h3>
+                        <p>Cubism revolutionizes visual representation, followed by Futurism celebrating speed and technology.</p>
+                    </div>
+                </div>
+                
+                <div class=\"timeline-item right\">
+                    <div class=\"timeline-content\">
+                        <h3>1916-1924</h3>
+                        <p>Dada emerges as an anti-war movement, challenging conventional artistic values.</p>
+                    </div>
+                </div>
+                
+                <div class=\"timeline-item left\">
+                    <div class=\"timeline-content\">
+                        <h3>1919-1933</h3>
+                        <p>Bauhaus school combines crafts and fine arts, while Constructivism and Suprematism develop in Russia.</p>
+                    </div>
+                </div>
+                
+                <div class=\"timeline-item right\">
+                    <div class=\"timeline-content\">
+                        <h3>1924-1945</h3>
+                        <p>Surrealism explores the unconscious mind, while Art Deco becomes popular in design and architecture.</p>
+                    </div>
+                </div>
+                
+                <div class=\"timeline-item left\">
+                    <div class=\"timeline-content\">
+                        <h3>1940s-1950s</h3>
+                        <p>Abstract Expressionism flourishes in New York, emphasizing spontaneous creation and emotional intensity.</p>
+                    </div>
+                </div>
+                
+                <div class=\"timeline-item right\">
+                    <div class=\"timeline-content\">
+                        <h3>1950s-1970s</h3>
+                        <p>Pop Art, Op Art, and Minimalism emerge as reactions to Abstract Expressionism and consumer culture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id=\"movements\" class=\"container\">
+            <h2 class=\"section-title\">Key Modern Art Movements</h2>
+            
+            <div class=\"art-grid\">
+                <div class=\"art-card\">
+                    <img src=\"https://i.ytimg.com/vi/WdEpb0y2WI4/maxresdefault.jpg\" alt=\"Abstract Expressionism\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Abstract Expressionism</h3>
+                        <p>Flourished in New York after World War II, emphasizing profound emotion and universal themes. Key artists: Jackson Pollock, Willem de Kooning, and Mark Rothko.</p>
+                        <button class=\"btn view-details\" data-movement=\"Abstract Expressionism\">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class=\"art-card\">
+                    <img src=\"https://m.media-amazon.com/images/I/51v1hUdq0RL._AC_UF1000,1000_QL80_.jpg\" alt=\"Cubism\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Cubism</h3>
+                        <p>Revolutionized art by reducing objects to geometric forms and depicting multiple perspectives simultaneously. Key artists: Pablo Picasso and Georges Braque.</p>
+                        <button class=\"btn view-details\" data-movement=\"Cubism\">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class=\"art-card\">
+                    <img src=\"https://cdn.sanity.io/images/476nwnl9/production/b732bfeb6fefe178e8c66482152861662ddd6d2c-3000x2391.jpg\" alt=\"Impressionism\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Impressionism</h3>
+                        <p>Reacting against formal painting styles, Impressionists focused on capturing the effects of light and movement, often working outdoors. Key artist: Claude Monet.</p>
+                        <button class=\"btn view-details\" data-movement=\"Impressionism\">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class=\"art-card\">
+                    <img src=\"https://images.squarespace-cdn.com/content/v1/6129e1d90fd5785f5023e7dd/aeca344f-d456-437c-9206-d5553feeaa59/Umberto_Boccioni%2C_Visioni_simultanee_%28Simultanvisionen%29%2C_oil_on_canvas%2C_60.5_%C3%97_60.5_cm%2C_Von_der_Heydt_Museum.jpg\" alt=\"Futurism\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Futurism</h3>
+                        <p>Celebrated modern technology, speed, and the machine age, initially lacking a defined style but later influenced by Cubism. Key artists: Umberto Boccioni and Giacomo Balla.</p>
+                        <button class=\"btn view-details\" data-movement=\"Futurism\">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class=\"art-card\">
+                    <img src=\"https://cdn.thecollector.com/wp-content/uploads/2020/11/modernism-definition.jpg?width=1400&quality=70\" alt=\"Surrealism\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Surrealism</h3>
+                        <p>Explored the realm of dreams and the unconscious mind, creating bizarre and unexpected juxtapositions of objects and imagery.</p>
+                        <button class=\"btn view-details\" data-movement=\"Surrealism\">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class=\"art-card\">
+                    <img src=\"https://m.media-amazon.com/images/I/51S-1nLK+hL._AC_UF1000,1000_QL80_.jpg\" alt=\"Post-Impressionism\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Post-Impressionism</h3>
+                        <p>Emphasized symbolic content and the artist's interpretation of the world, using vivid colors and expressive brushwork. Key artists: Paul Cézanne, Vincent van Gogh, and Paul Gauguin.</p>
+                        <button class=\"btn view-details\" data-movement=\"Post-Impressionism\">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class=\"art-card\">
+                    <img src=\"http://arabelart.com/cdn/shop/articles/the-profound-influence-of-art-movements-on-contemporary-paintings-381632.jpg?v=1734508630\" alt=\"Expressionism\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Expressionism</h3>
+                        <p>Focused on conveying intense emotions through distorted forms and colors. Key artist: Edvard Munch.</p>
+                        <button class=\"btn view-details\" data-movement=\"Expressionism\">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class=\"art-card\">
+                    <img src=\"https://miro.medium.com/v2/resize:fit:1400/1*lmIUhSjfKDrr6xGcxpnxsw.jpeg\" alt=\"Bauhaus\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Bauhaus</h3>
+                        <p>An art and design movement that originated in Germany, which later became known as the International Style. Key figures: Walter Gropius, Mies van der Rohe, and Wassily Kandinsky.</p>
+                        <button class=\"btn view-details\" data-movement=\"Bauhaus\">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class=\"art-card\">
+                    <img src=\"https://www.marioferretti.com/wp-content/uploads/sites/29/2024/08/Ferretti-Abstraction.jpg\" alt=\"Suprematism\" class=\"art-image\">
+                    <div class=\"art-info\">
+                        <h3>Suprematism</h3>
+                        <p>A Russian movement focused on basic geometric shapes, aiming for pure abstraction in painting. Key artist: Kazimir Malevich.</p>
+                        <button class=\"btn view-details\" data-movement=\"Suprematism\">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id=\"stats\" class=\"container\">
+            <h2 class=\"section-title\">Art Movement Statistics</h2>
+            
+            <div class=\"chart-container\">
+                <h3 class=\"chart-title\">Movement Duration (Years)</h3>
+                <div class=\"bar-chart\">
+                    <div class=\"bar-item\">
+                        <div class=\"bar-label\">Impressionism</div>
+                        <div class=\"bar\" style=\"width: 0%;\" data-width=\"80%\"></div>
+                        <div class=\"bar-value\">20 years</div>
+                    </div>
+                    <div class=\"bar-item\">
+                        <div class=\"bar-label\">Cubism</div>
+                        <div class=\"bar\" style=\"width: 0%;\" data-width=\"30%\"></div>
+                        <div class=\"bar-value\">7 years</div>
+                    </div>
+                    <div class=\"bar-item\">
+                        <div class=\"bar-label\">Surrealism</div>
+                        <div class=\"bar\" style=\"width: 0%;\" data-width=\"85%\"></div>
+                        <div class=\"bar-value\">21 years</div>
+                    </div>
+                    <div class=\"bar-item\">
+                        <div class=\"bar-label\">Abstract Expressionism</div>
+                        <div class=\"bar\" style=\"width: 0%;\" data-width=\"60%\"></div>
+                        <div class=\"bar-value\">15 years</div>
+                    </div>
+                    <div class=\"bar-item\">
+                        <div class=\"bar-label\">Bauhaus</div>
+                        <div class=\"bar\" style=\"width: 0%;\" data-width=\"56%\"></div>
+                        <div class=\"bar-value\">14 years</div>
+                    </div>
+                    <div class=\"bar-item\">
+                        <div class=\"bar-label\">Pop Art</div>
+                        <div class=\"bar\" style=\"width: 0%;\" data-width=\"68%\"></div>
+                        <div class=\"bar-value\">17 years</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class=\"chart-container\">
+                <h3 class=\"chart-title\">Geographical Distribution</h3>
+                <canvas id=\"pieChart\" width=\"400\" height=\"400\"></canvas>
+            </div>
+        </section>
+        
+        <section id=\"compare\" class=\"container\">
+            <h2 class=\"section-title\">Movement Comparison
